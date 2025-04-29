@@ -1,22 +1,6 @@
-# JavaScript + Tailwind
+# oscdb
 
-This is Vanilla Javascript + Tailwind CSS template with dark/light theme mode, svg icons support with Icones, pre-styled components, fully responsive and SEO friendly.
-
-## Usage
-
-Use this template via `@pr4j3sh/frames`:
-
-```bash
-npm create @pr4j3sh/frames@latest js-tw myapp
-```
-
-> You can replace `myapp` with the choice of your name.
-
-Run the app using:
-
-```bash
-npm run dev
-```
+This is a proposal for oscdb for CHAOSS.
 
 ## Read more
 
