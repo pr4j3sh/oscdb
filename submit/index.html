@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <div class="container">
+      <div id="navbar"></div>
+      <main>
+        <h6>Submit your community.</h6>
+        <ul>
+          <li>Form our github repository.</li>
+          <li>
+            Add your Community's <code>name</code>, <code>website</code>,
+            <code>description</code>,<code>region</code> and
+            <code>category</code> in the following format to
+            <code>./communities/data.json</code> file.
+          </li>
+          <pre><code>{</code>
+  <code>"name": "Community name"</code>
+  <code>"description": "Community description"</code>
+  <code>"region": "Region"</code>
+  <code>"category": "Category"</code>
+  <code>"website": "Website"</code>
+<code>}</code></pre>
+          <li>Create a pull request.</li>
+        </ul>
+        <!-- <form name="submitForm" method="post"> -->
+        <!--   <input type="text" name="name" placeholder="Community name" /> -->
+        <!--   <input type="text" name="website" placeholder="Website" /> -->
+        <!--   <input type="text" name="region" placeholder="Region" /> -->
+        <!--   <input type="text" name="category" placeholder="Category" /> -->
+        <!--   <textarea -->
+        <!--     type="text" -->
+        <!--     name="description" -->
+        <!--     placeholder="Description of your community..." -->
+        <!--     rows="5" -->
+        <!--   ></textarea> -->
+        <!--   <button type="submit">Submit</button> -->
+        <!-- </form> -->
+      </main>
+      <div id="footer"></div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="submit.js"></script>
+  </body>
+</html>
