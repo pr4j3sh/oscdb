@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-const { greet } = require("./src/utils");
+const getDocs = require("./src/loader");
 
-console.log(greet("frames"));
+async function init(path) {
+  const docs = await getDocs(path);
+  console.log(docs);
+}
 
-module.exports = {
-  greet,
-};
+init(".");

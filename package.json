@@ -1,6 +1,6 @@
 {
-  "name": "javascript",
-  "description": "NPM package template.",
+  "name": "@pr4j3sh/oscar",
+  "description": "search and query any open source codebase",
   "version": "1.0.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -21,6 +21,7 @@
     "dist"
   ],
   "keywords": [
+    "rag",
     "npm",
     "javascript",
     "commonjs",
@@ -28,16 +29,23 @@
   ],
   "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.github.io/pr4j3sh/)",
   "license": "MIT",
-  "homepage": "https://github.com/pr4j3sh/javascript#readme",
+  "homepage": "https://github.com/pr4j3sh/oscar#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pr4j3sh/javascript.git"
+    "url": "git+https://github.com/pr4j3sh/oscar.git"
   },
   "bugs": {
-    "url": "https://github.com/pr4j3sh/javascript/issues"
+    "url": "https://github.com/pr4j3sh/oscar/issues"
   },
   "devDependencies": {
     "esbuild": "^0.24.0",
     "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.50",
+    "@langchain/ollama": "^0.2.0",
+    "@pr4j3sh/codemap": "^1.0.0",
+    "@pr4j3sh/id": "^1.0.0",
+    "langchain": "^0.3.24"
   }
 }
