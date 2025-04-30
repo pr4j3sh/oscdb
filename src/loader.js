@@ -3,7 +3,7 @@ const { JSONLoader } = require("langchain/document_loaders/fs/json");
 const { RecursiveCharacterTextSplitter } = require("@langchain/textsplitters");
 const id = require("@pr4j3sh/id");
 
-async function getDocs(path) {
+async function load(path) {
   const tree = new Parser(path).scan().getTree();
   const blob = new Blob([tree], { type: "application/json" });
   const loader = new JSONLoader(blob);
@@ -19,4 +19,4 @@ async function getDocs(path) {
   return splittedDocs;
 }
 
-module.exports = getDocs;
+module.exports = load;
