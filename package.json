@@ -44,7 +44,7 @@
   "dependencies": {
     "@langchain/core": "^0.3.50",
     "@langchain/ollama": "^0.2.0",
-    "@pr4j3sh/codemap": "^1.0.0",
+    "@pr4j3sh/codemap": "^1.0.1",
     "@pr4j3sh/id": "^1.0.0",
     "langchain": "^0.3.24"
   }
