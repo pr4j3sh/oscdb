@@ -1,7 +1,7 @@
 {
   "name": "@pr4j3sh/oscar",
   "description": "open source codebase augmented retrieval",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./index.js",
   "bin": {
     "oscar": "index.js"

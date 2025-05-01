@@ -1,6 +1,7 @@
 const { OllamaEmbeddings } = require("@langchain/ollama");
 const { createSpinner } = require("nanospinner");
 const process = require("process");
+const { BATCH_SIZE } = require("./consts");
 
 const embeddings = new OllamaEmbeddings({
   model: "llama3.2",
@@ -11,9 +12,14 @@ async function embed(collection, docs) {
     `embedding ${collection} codebase(this might take some time, go grab a cup of coffee)...`,
   ).start();
   try {
-    const embeddedDocs = await embeddings.embedDocuments(
-      docs.map((d) => d.pageContent),
-    );
+    let embeddedDocs = [];
+    for (let i = 0; i < docs.length; i += BATCH_SIZE) {
+      const chunk = docs.slice(i, i + BATCH_SIZE);
+      const batch = await embeddings.embedDocuments(
+        chunk.map((d) => d.pageContent),
+      );
+      embeddedDocs.push(...batch);
+    }
 
     spinner.success(`${collection} embedded`);
     return embeddedDocs;
