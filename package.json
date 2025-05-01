@@ -2,21 +2,22 @@
   "name": "@pr4j3sh/oscar",
   "description": "open source codebase augmented retrieval",
   "version": "1.0.0",
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "bin": {
-    "oscar": "dist/index.js"
+    "oscar": "index.js"
   },
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
-    "build": "node esbuild.config.js",
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "build": "echo \"No build specified\" && exit 0 ",
+    "start": "node .",
+    "dev": "nodemon ."
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "rag",
+    "codebase",
+    "ai",
+    "langchain",
+    "llm",
     "npm",
     "javascript",
     "commonjs",
