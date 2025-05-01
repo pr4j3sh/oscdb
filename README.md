@@ -53,6 +53,8 @@ chroma run
 oscar [init | i] -c <collection_name> <path_to_codebase>
 ```
 
+> this is a one-time process
+
 - query collection
 
 ```bash
