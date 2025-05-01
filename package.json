@@ -44,6 +44,7 @@
     "@pr4j3sh/id": "^1.0.0",
     "chromadb": "^2.3.0",
     "commander": "^13.1.0",
-    "langchain": "^0.3.24"
+    "langchain": "^0.3.24",
+    "nanospinner": "^1.2.2"
   }
 }

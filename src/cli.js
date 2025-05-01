@@ -2,7 +2,8 @@ const { program } = require("commander");
 const init = require("./init");
 const query = require("./query");
 const path = require("path");
-const { listProjects, deleteProject } = require("./utils");
+const { listCollections, deleteCollection } = require("./utils");
+const process = require("process");
 
 program
   .name("oscar")
@@ -13,10 +14,17 @@ program
   .command("init")
   .alias("i")
   .description("creates a collection for the codebase")
-  .requiredOption("-c, --collection <name>", "collection name(must be unique)")
+  .requiredOption(
+    "-c, --collection <name>",
+    "collection name(min. 3 characters, must be unique)",
+  )
   .argument("<path>", "path to codebase")
   .action(async (codebasePath, opts) => {
     const p = path.resolve(codebasePath);
+    if (opts.collection.length < 3) {
+      console.error("collection name must be at least 3 characters long");
+      process.exit(1);
+    }
     await init(opts.collection, p);
   });
 
@@ -32,15 +40,15 @@ program
 
 program
   .command("list")
-  .description("list all available project collections")
-  .action(listProjects);
+  .description("list all available collections")
+  .action(listCollections);
 
 program
   .command("rm")
-  .description("delete a project collection")
-  .argument("<project>", "project name")
-  .action(async (opts) => {
-    await deleteProject(opts.project);
+  .description("delete a collection")
+  .argument("<collection>", "collection name")
+  .action(async (collection) => {
+    await deleteCollection(collection);
   });
 
 module.exports = program;

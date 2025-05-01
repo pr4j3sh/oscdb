@@ -1,16 +1,33 @@
-const { ChromaClient } = require("chromadb");
+const { createSpinner } = require("nanospinner");
+const process = require("process");
+const client = require("./chroma");
 
-const client = new ChromaClient({ path: "http://localhost:8000" });
-
-async function listProjects() {
-  const collections = await client.listCollections();
-  console.log("\navailable projects:\n");
-  collections.forEach((col) => console.log(`- ${col}`));
+async function listCollections() {
+  const spinner = createSpinner("listing collections...").start();
+  try {
+    const collections = await client.listCollections();
+    if (collections.length <= 0) {
+      spinner.warn("no collections available");
+      return;
+    }
+    spinner.success("available collections:");
+    collections.forEach((col) => console.log(`  - ${col}`));
+  } catch (error) {
+    spinner.error(`${error.message}`);
+    process.exit(1);
+  }
 }
 
-async function deleteProject(project) {
-  await client.deleteCollection({ name: project });
-  console.log(`\ndeleted project: ${projectName}`);
+async function deleteCollection(collection) {
+  const spinner = createSpinner(`deleting ${collection}...`).start();
+  try {
+    const c = await client.getCollection({ name: collection });
+    await client.deleteCollection(c);
+    spinner.success(`${collection} deleted`);
+  } catch (error) {
+    spinner.error(`${error.message}`);
+    process.exit(1);
+  }
 }
 
-module.exports = { listProjects, deleteProject };
+module.exports = { listCollections, deleteCollection };

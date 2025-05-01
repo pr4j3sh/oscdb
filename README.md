@@ -56,7 +56,7 @@ oscar [init | i] -c <collection_name> <path_to_codebase>
 - query collection
 
 ```bash
-oscar [query | q] -c <collection_name> <path_to_codebase>
+oscar [query | q] -c <collection_name> "<query>"
 ```
 
 - list collections
