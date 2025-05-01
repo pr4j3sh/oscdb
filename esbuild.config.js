@@ -3,7 +3,7 @@ const esbuild = require("esbuild");
 try {
   esbuild.buildSync({
     entryPoints: ["index.js"],
-    outfile: "./dist/index.cjs",
+    outfile: "./dist/index.js",
     format: "cjs",
     bundle: true,
     minify: true,
@@ -13,21 +13,5 @@ try {
   console.log("CJS build successful");
 } catch (err) {
   console.error("CJS build failed:", err);
-  process.exit(1);
-}
-
-try {
-  esbuild.buildSync({
-    entryPoints: ["index.js"],
-    outfile: "./dist/index.mjs",
-    format: "esm",
-    bundle: true,
-    minify: true,
-    platform: "browser",
-    target: ["esnext"],
-  });
-  console.log("ESM build successful");
-} catch (err) {
-  console.error("ESM build failed:", err);
   process.exit(1);
 }

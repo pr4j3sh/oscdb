@@ -1,15 +1,10 @@
 {
   "name": "@pr4j3sh/oscar",
-  "description": "search and query any open source codebase",
+  "description": "open source codebase augmented retrieval",
   "version": "1.0.0",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "exports": {
-    "require": "./dist/index.cjs",
-    "import": "./dist/index.mjs"
-  },
+  "main": "./dist/index.js",
   "bin": {
-    "javascript": "dist/index.cjs"
+    "oscar": "dist/index.js"
   },
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",

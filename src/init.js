@@ -2,10 +2,10 @@ const { embed } = require("./embedder");
 const load = require("./loader");
 const { storeData, createStore } = require("./store");
 
-async function init(project, path) {
+async function init(collection, path) {
   const docs = await load(path);
   const embedDocs = await embed(docs);
-  const store = createStore(project);
+  const store = createStore(collection);
   await storeData(store, embedDocs, docs);
 }
 

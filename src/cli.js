@@ -6,18 +6,18 @@ const { listProjects, deleteProject } = require("./utils");
 
 program
   .name("oscar")
-  .description("augmented retrival for open source projects")
+  .description("open source codebase augmented retrieval")
   .version("1.0.0");
 
 program
   .command("init")
   .alias("i")
-  .description("creates a project store in vector database")
-  .requiredOption("-p, --project <name>", "project name")
+  .description("creates a collection for the codebase")
+  .requiredOption("-c, --collection <name>", "collection name(must be unique)")
   .argument("<path>", "path to codebase")
-  .action(async (codePath, opts) => {
-    const absPath = path.resolve(codePath);
-    await init(opts.project, absPath);
+  .action(async (codebasePath, opts) => {
+    const p = path.resolve(codebasePath);
+    await init(opts.collection, p);
   });
 
 program
