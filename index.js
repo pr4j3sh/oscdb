@@ -1,13 +1,5 @@
 #!/usr/bin/env node
 
-const { embed } = require("./src/embedder");
-const load = require("./src/loader");
-const { storeData } = require("./src/store");
+const program = require("./src/cli");
 
-async function init(path) {
-  const docs = await load(path);
-  const embedDocs = await embed(docs);
-  await storeData(embedDocs, docs);
-}
-
-init(".");
+program.parse();
