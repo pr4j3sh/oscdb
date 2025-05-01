@@ -2,6 +2,7 @@ const { Chroma } = require("@langchain/community/vectorstores/chroma");
 const { embeddings } = require("./embedder");
 const { createSpinner } = require("nanospinner");
 const process = require("process");
+const { CHROMA_PATH } = require("./consts");
 
 function createStore(collection) {
   try {
@@ -10,7 +11,7 @@ function createStore(collection) {
     });
     return store;
   } catch (error) {
-    console.error(`${error.message}`);
+    console.error(error.message);
     process.exit(1);
   }
 }

@@ -2,6 +2,10 @@ const { createSpinner } = require("nanospinner");
 const process = require("process");
 const client = require("./chroma");
 
+const asString = (docs) => {
+  return docs.map((d) => d.pageContent).join("\n\n");
+};
+
 async function listCollections() {
   const spinner = createSpinner("listing collections...").start();
   try {
@@ -30,4 +34,4 @@ async function deleteCollection(collection) {
   }
 }
 
-module.exports = { listCollections, deleteCollection };
+module.exports = { asString, listCollections, deleteCollection };

@@ -7,15 +7,14 @@ const {
   RunnableSequence,
 } = require("@langchain/core/runnables");
 const { StringOutputParser } = require("@langchain/core/output_parsers");
+const { createSpinner } = require("nanospinner");
+const process = require("process");
+const { asString } = require("./utils");
 
-const formatDocumentsAsString = (documents) => {
-  return documents.map((document) => document.pageContent).join("\n\n");
-};
+async function query(collection, q) {
+  const store = createStore(collection);
 
-async function query(project, q) {
-  const store = createStore(project);
-
-  const storeRetriever = store.asRetriever();
+  const retriever = store.asRetriever();
 
   const prompt = ChatPromptTemplate.fromMessages([
     ["system", SYSTEM_TEMPLATE],
@@ -24,7 +23,7 @@ async function query(project, q) {
 
   const chain = RunnableSequence.from([
     {
-      context: storeRetriever.pipe(formatDocumentsAsString),
+      context: retriever.pipe(asString),
       question: new RunnablePassthrough(),
     },
     prompt,
@@ -32,9 +31,18 @@ async function query(project, q) {
     new StringOutputParser(),
   ]);
 
-  const answer = await chain.invoke(q);
-
-  console.log({ answer });
+  const spinner = createSpinner(`${q}`).start();
+  try {
+    const stream = await chain.stream(q);
+    spinner.success(">");
+    for await (const chunk of stream) {
+      process.stdout.write(chunk);
+    }
+    console.log();
+  } catch (error) {
+    spinner.error(`${error.message}`);
+    process.exit(1);
+  }
 }
 
 module.exports = query;

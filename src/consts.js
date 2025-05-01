@@ -4,8 +4,11 @@ const CHUNK_SIZE = 1000;
 
 const CHUNK_OVERLAP = 200;
 
-const SYSTEM_TEMPLATE = `Use the following pieces of context to answer the question at the end.
-If you don't know the answer, just say that you don't know, don't try to make up an answer.
+const SYSTEM_TEMPLATE = `You are a helpful assistant specialized in answering questions about the codebase provided to you in the context.
+Use the following context to answer the question as accurately and concisely as possible.
+
+Do not try to bring any foreign knowledge. However, general understanding is appreciated.
+
 ----------------
 {context}`;
 

@@ -31,11 +31,11 @@ program
 program
   .command("query")
   .alias("q")
-  .description("query a specific project collection")
-  .requiredOption("-p, --project <name>", "project name")
+  .description("query a specific collection")
+  .requiredOption("-c, --collection <name>", "collection name")
   .argument("<query>", "your search query")
   .action(async (q, opts) => {
-    await query(opts.project, q);
+    await query(opts.collection, q);
   });
 
 program
